@@ -12,7 +12,8 @@ namespace CustomerManagement.DAL.Models
     {
         public CustomerManagerContext() : 
             base("CustomerDBContext")
-        {   
+        {
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 10;
         }
         
         public DbSet<Customer> Customers { get; set; }

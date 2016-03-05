@@ -26,7 +26,7 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
         public void Add(T entity)
         {
             if (entity == null)
-                throw new ArgumentException("Added entity object can't be null");
+                throw new ArgumentNullException("Added entity object can't be null");
 
             if (!IsEntitySaved(entity))
                 objectSet.AddObject(entity);
@@ -34,7 +34,7 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
 
         private bool IsEntitySaved(T entity)
         {
-            return entity.Id == Guid.Empty || GetById(entity.Id) == null;
+            return entity.Id != Guid.Empty && GetById(entity.Id) == null;
         }
 
         public T Create()
