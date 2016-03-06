@@ -13,6 +13,7 @@ namespace CustomerManagement.Controllers
             this.customerManager = customerManager;
         }
 
+        [HttpGet]
         public async Task<IHttpActionResult> GetCustomers()
         {
             var customerList = await customerManager.LoadCustomersAsync();
