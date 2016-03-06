@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using AutoMapper;
 using CustomerManagement.Business.Customer;
 using CustomerManagement.DAL.UnitOfWork;
 using System;
@@ -28,7 +29,15 @@ namespace CustomerManagement.IoC
             builder.RegisterType<CustomerManager>()
                 .As<ICustomerManager>();
 
+            RegisterAutomapper(builder);
+
             return builder.Build();
+        }
+
+        private void RegisterAutomapper(ContainerBuilder builder)
+        {
+            IMapper mapper = new Mappers.AutomapperSetting().CreateMapper();
+            builder.RegisterInstance(mapper).As<IMapper>();
         }
     }
 }

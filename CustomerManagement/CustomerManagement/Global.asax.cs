@@ -7,6 +7,7 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
+using AutoMapper;
 
 namespace CustomerManagement
 {
@@ -19,6 +20,17 @@ namespace CustomerManagement
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            CreateAutofacContainer();
+            CreateMappers();
+        }
+
+        private void CreateMappers()
+        {
+
+        }
+
+        private void CreateAutofacContainer()
+        {
             var container = new IoC.AutofacContainerBuilder().BuildContainer();
             GlobalConfiguration.Configuration.DependencyResolver = new IoC.AutofacWebApiDependencyResolver(container);
         }
