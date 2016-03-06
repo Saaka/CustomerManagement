@@ -12,6 +12,7 @@ namespace CustomerManagement.DAL.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         public DbContext context;
+        private bool isDisposed;
 
         private IGuidRepository<Customer> customerRepository;
 
@@ -30,9 +31,7 @@ namespace CustomerManagement.DAL.UnitOfWork
             get
             {
                 if(customerRepository == null)
-                {
                     customerRepository = new GuidRepository<Customer>(context);
-                }
                 return customerRepository;
             }
         }
@@ -45,6 +44,25 @@ namespace CustomerManagement.DAL.UnitOfWork
         public Task<int> CommitAsync()
         {
             return context.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if(!isDisposed)
+            {
+                if(disposing)
+                {
+                    if (context != null)
+                        context.Dispose();
+                }
+                isDisposed = true;
+            }
         }
     }
 }

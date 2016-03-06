@@ -63,19 +63,34 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
             }
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> query)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> query)
         {
-            return objectSet.Where(query);
+            return objectSet.Where(query).ToList();
         }
 
-        public IQueryable<T> GetAll()
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> query)
         {
-            return objectSet;
+            return await objectSet.Where(query).ToListAsync();
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+            return objectSet.ToList();
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await objectSet.ToListAsync();
         }
 
         public T GetById(Guid id)
         {
             return Find(x => x.Id == id).SingleOrDefault();
+        }
+
+        public async Task<T> GetByIdAsync(Guid id)
+        {
+            return await objectSet.SingleOrDefaultAsync(x => x.Id == id);
         }
     }
 }

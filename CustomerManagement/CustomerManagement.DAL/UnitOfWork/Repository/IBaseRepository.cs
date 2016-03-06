@@ -20,13 +20,24 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
         /// Gets all rows from repository.
         /// </summary>
         /// <returns>Returns all rows from repository.</returns>
-        IQueryable<T> GetAll();
+        IEnumerable<T> GetAll();
+        /// <summary>
+        /// Gets all rows from repository asynchronusly.
+        /// </summary>
+        /// <returns>Returns all rows from repository.</returns>
+        Task<IEnumerable<T>> GetAllAsync();
         /// <summary>
         /// Finds all rows for given query.
         /// </summary>
         /// <param name="query">Expression with query.</param>
         /// <returns>Rows matching the query</returns>
-        IQueryable<T> Find(Expression<Func<T, bool>> query);
+        IEnumerable<T> Find(Expression<Func<T, bool>> query);
+        /// <summary>
+        /// Finds all rows for given query asynchronusly.
+        /// </summary>
+        /// <param name="query">Expression with query.</param>
+        /// <returns>Rows matching the query</returns>
+        Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> query);
         /// <summary>
         /// Adds entity to repository.
         /// </summary>
@@ -48,5 +59,11 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
         /// <param name="id">Id.</param>
         /// <returns>Entity for given id. Null if entity does not exists.</returns>
         T GetById(U id);
+        /// <summary>
+        /// Gets entity based on id asynchronusly.
+        /// </summary>
+        /// <param name="id">Id.</param>
+        /// <returns>Entity for given id. Null if entity does not exists.</returns>
+        Task<T> GetByIdAsync(U id);
     }
 }

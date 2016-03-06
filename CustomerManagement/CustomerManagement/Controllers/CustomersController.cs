@@ -1,9 +1,4 @@
-﻿using CustomerManagement.DAL.UnitOfWork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using CustomerManagement.Business.Customer;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -12,17 +7,16 @@ namespace CustomerManagement.Controllers
     [RoutePrefix("api/customers")]
     public class CustomersController : ApiController
     {
-        protected readonly IUnitOfWork unitOfWork;
-        public CustomersController(IUnitOfWork unitOfWork)
+        protected readonly CustomerManager customerManager;
+        public CustomersController(CustomerManager customerManager)
         {
-            this.unitOfWork = unitOfWork;
+            this.customerManager = customerManager;
         }
 
         public async Task<IHttpActionResult> GetCustomers()
         {
-            unitOfWork.CustomerRepository.Add(new DAL.Models.Customer() {Name = "SAKA" });
-            unitOfWork.Commit();
-            return Ok(unitOfWork.CustomerRepository.GetAll());
+            var customerList = await customerManager.LoadCustomersAsync();
+            return Ok(customerList);
         }
     }
 }

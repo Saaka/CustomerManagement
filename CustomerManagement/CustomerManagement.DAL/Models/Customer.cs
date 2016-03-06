@@ -28,9 +28,5 @@ namespace CustomerManagement.DAL.Models
         public string PostalCode { get; set; }
         [MaxLength(50)]
         public string Street { get; set; }
-        [MaxLength(10)]
-        public string HomeNumber { get; set; }
-        [MaxLength(10)]
-        public string FlatNumber { get; set; }
     }
 }

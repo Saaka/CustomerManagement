@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using CustomerManagement.Business.Customer;
 using CustomerManagement.DAL.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,9 @@ namespace CustomerManagement.IoC
 
             builder.RegisterType<UnitOfWork>()
                 .As<IUnitOfWork>();
+
+            builder.RegisterType<CustomerManager>()
+                .As<ICustomerManager>();
 
             return builder.Build();
         }

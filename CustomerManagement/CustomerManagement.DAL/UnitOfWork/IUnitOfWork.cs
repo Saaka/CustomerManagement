@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CustomerManagement.DAL.UnitOfWork
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         /// <summary>
         /// Save all changes.
