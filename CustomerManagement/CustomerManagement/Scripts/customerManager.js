@@ -1,1 +1,1 @@
-﻿angular.module('customerManager', ['ui.router']);
+﻿angular.module('customerManager', ['ui.router', 'toaster']);

@@ -4,9 +4,11 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Customer Manager</title>
+    @Styles.Render("~/bundles/csslibs")
+    @Scripts.Render("~/bundles/jslibs-header")
 </head>
 <body>
-    <div ng-Cloak> 
+    <div ng-cloak> 
         <main class="container">
             <div class="row">
                 <div ui-view></div>
@@ -14,5 +16,7 @@
         </main>
         <toaster-container></toaster-container>
     </div>
+        @Scripts.Render("~/bundles/jslibs")
+        @Scripts.Render("~/bundles/customer-manager-js")
 </body>
 </html>

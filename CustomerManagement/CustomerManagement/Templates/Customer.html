@@ -1,0 +1,42 @@
+﻿<div ng-controller="CustomerCtrl">
+    <div class="page-header">
+        <h1>Customer</h1>
+    </div>
+    <div>
+        <form>
+            <div class="form-group">
+                <label for="customer-name">Name</label>
+                <input type="text" class="form-control" id="customer-name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="customer-surname">Surname</label>
+                <input type="text" class="form-control" id="customer-surname" placeholder="Surname">
+            </div>
+            <div class="form-group">
+                <label for="customer-phone">Phone</label>
+                <input type="tel" class="form-control" id="customer-phone" placeholder="Phone">
+            </div>
+            <div class="form-group">
+                <label for="customer-country">Country</label>
+                <input type="text" class="form-control" id="customer-country" placeholder="Country">
+            </div>
+            <div class="form-group">
+                <label for="customer-city">City</label>
+                <input type="text" class="form-control" id="customer-city" placeholder="City">
+            </div>
+            <div class="form-group">
+                <label for="customer-postalcode">Postal code</label>
+                <input type="text" class="form-control" id="customer-postalcode" placeholder="Postal code">
+            </div>
+            <div class="form-group">
+                <label for="customer-street">Street</label>
+                <input type="text" class="form-control" id="customer-street" placeholder="Street">
+            </div>
+            <div>
+                <a ui-sref="list" class="btn btn-primary">Back to list</a>
+                <button type="submit" value="Submit" ng-click="saveCustomer()" class="btn btn-success">Save customer</button>
+            </div>
+        </form>
+    </div>
+
+</div>

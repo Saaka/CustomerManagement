@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
 using AutoMapper;
+using System.Web.Optimization;
 
 namespace CustomerManagement
 {
@@ -19,14 +20,9 @@ namespace CustomerManagement
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             CreateAutofacContainer();
-            CreateMappers();
-        }
-
-        private void CreateMappers()
-        {
-
         }
 
         private void CreateAutofacContainer()
