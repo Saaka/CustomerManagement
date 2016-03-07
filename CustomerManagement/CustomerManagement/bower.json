@@ -1,0 +1,25 @@
+{
+  "name": "CustomerManagement",
+  "homepage": "https://github.com/Saaka/CustomerManagement",
+  "authors": [
+    "Michał Sakwa <saka1988@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "AngularJS-Toaster": "angularjs-toaster#^1.2.0",
+    "angular-ui-router": "^0.2.18",
+    "angular-animate": "^1.5.0"
+  }
+}
