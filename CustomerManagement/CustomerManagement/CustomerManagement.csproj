@@ -187,6 +187,7 @@
     <Content Include="Scripts\Controllers\customerCtrl.js" />
     <Content Include="Scripts\Controllers\customerListCtrl.js" />
     <Content Include="Scripts\customerManager.js" />
+    <Content Include="Scripts\Services\alertService.js" />
     <Content Include="Scripts\Services\customerService.js" />
     <Content Include="Templates\Customer.html" />
     <Content Include="Templates\CustomerList.html" />

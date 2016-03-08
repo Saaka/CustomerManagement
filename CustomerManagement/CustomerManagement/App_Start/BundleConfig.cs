@@ -18,18 +18,21 @@ namespace CustomerManagement
                                         "~/lib/angular/angular-ui-router.js",
                                         "~/lib/angular/toaster.js",
                                         "~/lib/bootstrap/js/bootstrap.js",
-                                        "~/lib/jquery/jquery.js"));
+                                        "~/lib/jquery/jquery.js",
+                                        "~/lib/sweetalert/sweetalert.min.js"));
 
             bundles.Add(new StyleBundle("~/bundles/csslibs")
                             .Include("~/lib/angular/toaster.css",
-                                        "~/lib/bootstrap/css/bootstrap.css"));
+                                        "~/lib/bootstrap/css/bootstrap.css",
+                                        "~/lib/sweetalert/sweetalert.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/customer-manager-js")
                             .Include("~/Scripts/customerManager.js",
                                         "~/Scripts/customerManager.config.js",
                                         "~/Scripts/Controllers/customerListCtrl.js",
                                         "~/Scripts/Controllers/customerCtrl.js",
-                                        "~/Scripts/Services/customerService.js"));
+                                        "~/Scripts/Services/customerService.js",
+                                        "~/Scripts/Services/alertService.js"));
         }
     }
 }

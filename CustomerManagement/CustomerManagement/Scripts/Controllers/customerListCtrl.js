@@ -1,5 +1,5 @@
 ﻿angular.module('customerManager')
-    .controller('CustomerListCtrl', ['$scope', 'toaster', function ($scope, toaster) {
+    .controller('CustomerListCtrl', ['$scope', function ($scope) {
 
-        toaster.pop('info', 'Hello', 'Welcome to customer manager');
+
     }]);

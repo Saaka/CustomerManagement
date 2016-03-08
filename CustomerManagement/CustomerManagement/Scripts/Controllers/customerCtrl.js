@@ -1,11 +1,18 @@
 ﻿angular.module('customerManager')
-    .controller('CustomerCtrl', ['$scope', 'toaster', '$state', function ($scope, toaster, $state) {
-        
-        $scope.saveCustomer = function () {
+    .controller('CustomerCtrl', ['$scope', '$state', 'alertService', function ($scope, $state, alertService) {
 
-            toaster.pop('success', 'Hello', 'Added');
-            $state.go('list');
+        $scope.goBack = function () {
+            alertService.confirm('Confirm', 'Go back to customer list?', function (isCanceled) {
+                if (isCanceled) {
+                    $state.go('list');
+                }
+            });
         };
 
-        toaster.pop('info', 'Hello', 'Add new customer');
+        $scope.saveCustomer = function () {
+
+            alertService.success('Success', 'Customer saved!', function () {
+                $state.go('list');
+            });
+        };
     }]);
