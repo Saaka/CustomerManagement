@@ -13,32 +13,33 @@
             <div class="form-group">
                 <label for="customer-surname">Surname</label>
                 <input type="text" class="form-control" id="customer-surname" name="surname" placeholder="Surname" ng-model="customer.surname" ng-maxlength="50">
-                <p class="text-danger" ng-show="form.surname.$error.maxlength">Name is too long. </p>
+                <p class="text-danger" ng-show="form.surname.$error.maxlength">Surname is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-phone">Phone</label>
                 <input type="tel" class="form-control" id="customer-phone" name="phone" placeholder="Phone" ng-model="customer.phone" ng-maxlength="15">
-                <p class="text-danger" ng-show="form.phone.$error.maxlength">Name is too long. </p>
+                <p class="text-danger" ng-show="form.phone.$error.maxlength">Phone number is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-country">Country</label>
                 <input type="text" class="form-control" id="customer-country" name="country" placeholder="Country" ng-model="customer.country" ng-maxlength="50">
-                <p class="text-danger" ng-show="form.country.$error.maxlength">Name is too long. </p>
+                <p class="text-danger" ng-show="form.country.$error.maxlength">Country name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-city">City</label>
                 <input type="text" class="form-control" id="customer-city" name="city" placeholder="City" ng-model="customer.city" ng-maxlength="50">
-                <p class="text-danger" ng-show="form.city.$error.maxlength">Name is too long. </p>
+                <p class="text-danger" ng-show="form.city.$error.maxlength">City name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-postalcode">Postal code</label>
-                <input type="text" class="form-control" id="customer-postalcode" name="postalCode" placeholder="Postal code" ng-model="customer.postalCode" ng-maxlength="10">
-                <p class="text-danger" ng-show="form.postalCode.$error.maxlength">Name is too long. </p>
+                <input type="text" class="form-control" id="customer-postalcode" name="postalCode" placeholder="Postal code" ng-model="customer.postalCode" ng-pattern="postalCodeRegex" ng-maxlength="10">
+                <p class="text-danger" ng-show="form.postalCode.$error.maxlength">Postal code is too long. </p>
+                <p class="text-danger" ng-show="form.postalCode.$error.pattern">Invalid postal code. </p>
             </div>
             <div class="form-group">
                 <label for="customer-street">Street</label>
                 <input type="text" class="form-control" id="customer-street" name="street" placeholder="Street" ng-model="customer.street" ng-maxlength="50">
-                <p class="text-danger" ng-show="form.street.$error.maxlength">Name is too long. </p>
+                <p class="text-danger" ng-show="form.street.$error.maxlength">Street name is too long. </p>
             </div>
             <div>
                 <button ng-click="goBack()" class="btn btn-primary">Back to list</button>

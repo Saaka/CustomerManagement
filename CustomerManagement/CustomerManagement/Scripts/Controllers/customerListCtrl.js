@@ -20,7 +20,7 @@
                 if (confirmation) {
 
                     var index = $scope.customers.indexOf(customer);
-                    if (index) {
+                    if (index >= 0) {
                         customerService.deleteCustomer(customer.id)
                             .then(function (res) {
                                 $scope.customers.splice(index, 1);

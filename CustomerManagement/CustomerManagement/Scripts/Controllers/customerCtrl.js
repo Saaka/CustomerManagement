@@ -2,6 +2,7 @@
     .controller('CustomerCtrl', ['$scope', '$state', 'alertService', 'customerService', '$stateParams', function ($scope, $state, alertService, customerService, $stateParams) {
         $scope.customer = {};
         $scope.formValid = false;
+        $scope.postalCodeRegex = "\\d{2}-\\d{3}";
 
         var init = function()
         {
