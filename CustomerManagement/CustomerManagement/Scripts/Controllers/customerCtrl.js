@@ -1,7 +1,14 @@
 ﻿angular.module('customerManager')
-    .controller('CustomerCtrl', ['$scope', '$state', 'alertService', 'customerService', function ($scope, $state, alertService, customerService) {
+    .controller('CustomerCtrl', ['$scope', '$state', 'alertService', 'customerService', '$stateParams', function ($scope, $state, alertService, customerService, $stateParams) {
         $scope.customer = {};
         $scope.formValid = false;
+
+        var init = function()
+        {
+            if($stateParams.cust) {
+                $scope.customer = $stateParams.cust;
+            }
+        };
 
         $scope.goBack = function () {
             alertService.confirm('Confirm', 'Go back to customer list?', function (isCanceled) {
@@ -22,4 +29,6 @@
                     alertService.error('Error', err);
                 });
         };
+
+        init();
     }]);

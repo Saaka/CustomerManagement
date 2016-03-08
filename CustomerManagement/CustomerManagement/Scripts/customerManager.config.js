@@ -10,7 +10,8 @@
         })
         .state('customer', {
             url: '/customer',
-            templateUrl: 'Templates/Customer.html'
+            templateUrl: 'Templates/Customer.html',
+            params: { cust: {}}
         });
 
   }]);

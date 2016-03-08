@@ -13,6 +13,7 @@
                 <th>City</th>
                 <th>Postal code</th>
                 <th>Street</th>
+                <th></th>
             </tr>
             <tr ng-repeat="customer in customers">
                 <td>{{$index + 1}}</td>
@@ -23,6 +24,10 @@
                 <td>{{::customer.city}}</td>
                 <td>{{::customer.postalCode}}</td>
                 <td>{{::customer.street}}</td>
+                <td>
+                    <button class="btn btn-xs btn-info" ui-sref="customer({cust: customer})">Edit</button>
+                    <button class="btn btn-xs btn-danger" ng-click="deleteCustomer(customer)">Delete</button>
+                </td>
             </tr>
         </table>
     </div>

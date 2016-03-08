@@ -15,5 +15,18 @@
                 });
         };
 
+        $scope.deleteCustomer = function (customer) {
+            alertService.confirm("Delete customer?", "Delete customer " + customer.name, function (confirmation) {
+                if (confirmation) {
+
+                    var index = $scope.customers.indexOf(customer);
+                    if (index) {
+                        $scope.customers.splice(index, 1);
+                        $scope.$apply();
+                    }
+                }
+            });
+        };
+
         init();
     }]);
