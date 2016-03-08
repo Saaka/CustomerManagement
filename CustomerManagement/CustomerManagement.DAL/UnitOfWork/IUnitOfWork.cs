@@ -24,5 +24,10 @@ namespace CustomerManagement.DAL.UnitOfWork
         /// Repository containing customers.
         /// </summary>
         IGuidRepository<Customer> CustomerRepository { get; }
+        /// <summary>
+        /// Attach entity to UnitOfWork.
+        /// </summary>
+        /// <param name="entity"></param>
+        void Attach(object entity);
     }
 }

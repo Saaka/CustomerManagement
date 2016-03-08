@@ -58,6 +58,8 @@
     <Compile Include="UnitOfWork\Repository\IBaseRepository.cs" />
     <Compile Include="UnitOfWork\Repository\IGuidRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UnitOfWork\Utils\EntitySavedValidator.cs" />
+    <Compile Include="UnitOfWork\Utils\IEntitySavedValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

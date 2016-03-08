@@ -182,6 +182,9 @@
     <Content Include="lib\bootstrap\js\bootstrap.js" />
     <Content Include="lib\bootstrap\js\bootstrap.min.js" />
     <Content Include="lib\bootstrap\js\npm.js" />
+    <Content Include="lib\fontawesome\css\font-awesome.css" />
+    <Content Include="lib\fontawesome\css\font-awesome.min.css" />
+    <Content Include="lib\fontawesome\fonts\fontawesome-webfont.svg" />
     <Content Include="lib\jquery\jquery.js" />
     <Content Include="lib\jquery\jquery.min.js" />
     <Content Include="Scripts\Controllers\customerCtrl.js" />
@@ -224,6 +227,12 @@
     <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="lib\fontawesome\css\font-awesome.css.map" />
+    <Content Include="lib\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="lib\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="lib\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="lib\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="lib\fontawesome\fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

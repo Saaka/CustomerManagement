@@ -26,5 +26,13 @@ namespace CustomerManagement.Business.Customer
 
             return mapper.Map<IEnumerable<CustomerModel>>(list);
         }
+
+        public async Task<CustomerModel> SaveCustomerAsync(CustomerModel customerModel)
+        {
+            DAL.Models.Customer customer = mapper.Map<DAL.Models.Customer>(customerModel);
+            unitOfWork.Attach(customer);
+            await unitOfWork.CommitAsync();
+            return mapper.Map<CustomerModel>(customer);
+        }
     }
 }

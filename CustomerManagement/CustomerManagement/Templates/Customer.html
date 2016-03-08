@@ -3,38 +3,46 @@
         <h1>Customer</h1>
     </div>
     <div>
-        <form>
+        <form name="form" novalidate >
             <div class="form-group">
                 <label for="customer-name">Name</label>
-                <input type="text" class="form-control" id="customer-name" placeholder="Name">
+                <input type="text" class="form-control" id="customer-name" name="customerName" placeholder="Name" ng-model="customer.name" ng-maxlength="50" required>
+                <p class="text-danger" ng-show="form.customerName.$error.required">Name is required. </p>
+                <p class="text-danger" ng-show="form.customerName.$error.maxlength">Name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-surname">Surname</label>
-                <input type="text" class="form-control" id="customer-surname" placeholder="Surname">
+                <input type="text" class="form-control" id="customer-surname" name="surname" placeholder="Surname" ng-model="customer.surname" ng-maxlength="50">
+                <p class="text-danger" ng-show="form.surname.$error.maxlength">Name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-phone">Phone</label>
-                <input type="tel" class="form-control" id="customer-phone" placeholder="Phone">
+                <input type="tel" class="form-control" id="customer-phone" name="phone" placeholder="Phone" ng-model="customer.phone" ng-maxlength="15">
+                <p class="text-danger" ng-show="form.phone.$error.maxlength">Name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-country">Country</label>
-                <input type="text" class="form-control" id="customer-country" placeholder="Country">
+                <input type="text" class="form-control" id="customer-country" name="country" placeholder="Country" ng-model="customer.country" ng-maxlength="50">
+                <p class="text-danger" ng-show="form.country.$error.maxlength">Name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-city">City</label>
-                <input type="text" class="form-control" id="customer-city" placeholder="City">
+                <input type="text" class="form-control" id="customer-city" name="city" placeholder="City" ng-model="customer.city" ng-maxlength="50">
+                <p class="text-danger" ng-show="form.city.$error.maxlength">Name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-postalcode">Postal code</label>
-                <input type="text" class="form-control" id="customer-postalcode" placeholder="Postal code">
+                <input type="text" class="form-control" id="customer-postalcode" name="postalCode" placeholder="Postal code" ng-model="customer.postalCode" ng-maxlength="10">
+                <p class="text-danger" ng-show="form.postalCode.$error.maxlength">Name is too long. </p>
             </div>
             <div class="form-group">
                 <label for="customer-street">Street</label>
-                <input type="text" class="form-control" id="customer-street" placeholder="Street">
+                <input type="text" class="form-control" id="customer-street" name="street" placeholder="Street" ng-model="customer.street" ng-maxlength="50">
+                <p class="text-danger" ng-show="form.street.$error.maxlength">Name is too long. </p>
             </div>
             <div>
                 <button ng-click="goBack()" class="btn btn-primary">Back to list</button>
-                <button type="submit" value="Submit" ng-click="saveCustomer()" class="btn btn-success">Save customer</button>
+                <button type="submit" value="Submit" ng-click="saveCustomer()" class="btn btn-success" ng-disabled="!form.$valid">Save customer</button>
             </div>
         </form>
     </div>

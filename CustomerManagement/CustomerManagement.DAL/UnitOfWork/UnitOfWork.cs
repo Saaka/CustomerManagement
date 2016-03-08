@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 using CustomerManagement.DAL.Models;
 using CustomerManagement.DAL.UnitOfWork.Repository;
 using System.Data.Entity;
+using CustomerManagement.DAL.UnitOfWork.Utils;
 
 namespace CustomerManagement.DAL.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        public DbContext context;
-        private bool isDisposed;
+        protected bool isDisposed;
+        protected readonly DbContext context;
+        protected readonly IEntitySavedValidator entitySavedValidator;
 
         private IGuidRepository<Customer> customerRepository;
 
-        public UnitOfWork()
+        public UnitOfWork(IEntitySavedValidator entitySavedValidator)
         {
             context = CreateContext();
+            this.entitySavedValidator = entitySavedValidator;
         }
 
         protected virtual DbContext CreateContext()
@@ -31,7 +34,7 @@ namespace CustomerManagement.DAL.UnitOfWork
             get
             {
                 if(customerRepository == null)
-                    customerRepository = new GuidRepository<Customer>(context);
+                    customerRepository = new GuidRepository<Customer>(context, entitySavedValidator);
                 return customerRepository;
             }
         }
@@ -50,6 +53,14 @@ namespace CustomerManagement.DAL.UnitOfWork
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public void Attach(object entity)
+        {
+            if (entitySavedValidator.IsEntitySaved(entity))
+                context.Entry(entity).State = EntityState.Modified;
+            else
+                context.Entry(entity).State = EntityState.Added;
         }
 
         private void Dispose(bool disposing)

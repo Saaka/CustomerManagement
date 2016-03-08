@@ -23,4 +23,28 @@
                 }
             });
         };
+
+        this.error = function (title, message, onClose) {
+            swal({title: title,
+                text: message,
+                type: 'error'
+            }, function() {
+                if(onClose) {
+                    onClose();
+                }
+            });
+        };
+
+        this.loader = function () {
+            swal({
+                title: "<span><i class='fa fa-refresh fa-spin'></i></span>",
+                text: "Loading data",
+                html: true,
+                showConfirmButton: false
+            });
+        };
+
+        this.close = function () {
+            swal.close();
+        }
     });

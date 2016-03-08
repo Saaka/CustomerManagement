@@ -3,6 +3,7 @@ using Autofac.Integration.WebApi;
 using AutoMapper;
 using CustomerManagement.Business.Customer;
 using CustomerManagement.DAL.UnitOfWork;
+using CustomerManagement.DAL.UnitOfWork.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace CustomerManagement.IoC
 
             builder.RegisterType<CustomerManager>()
                 .As<ICustomerManager>();
+
+            builder.RegisterType<EntitySavedValidator>()
+                .As<IEntitySavedValidator>();
 
             RegisterAutomapper(builder);
 

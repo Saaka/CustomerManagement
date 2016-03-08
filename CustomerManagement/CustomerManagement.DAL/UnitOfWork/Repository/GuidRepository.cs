@@ -1,4 +1,5 @@
 ﻿using CustomerManagement.DAL.Interface;
+using CustomerManagement.DAL.UnitOfWork.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -16,10 +17,12 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
     {
         protected readonly DbContext context;
         protected readonly ObjectSet<T> objectSet;
+        protected readonly IEntitySavedValidator entitySavedValidator;
 
-        public GuidRepository(DbContext context)
+        public GuidRepository(DbContext context, IEntitySavedValidator entitySavedValidator)
         {
             this.context = context;
+            this.entitySavedValidator = entitySavedValidator;
             objectSet = ((IObjectContextAdapter)this.context).ObjectContext.CreateObjectSet<T>();
         }
 
@@ -28,13 +31,8 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
             if (entity == null)
                 throw new ArgumentNullException("Added entity object can't be null");
 
-            if (!IsEntitySaved(entity))
+            if (!entitySavedValidator.IsEntitySaved(entity))
                 objectSet.AddObject(entity);
-        }
-
-        private bool IsEntitySaved(T entity)
-        {
-            return entity.Id != Guid.Empty && GetById(entity.Id) == null;
         }
 
         public T Create()
@@ -50,7 +48,7 @@ namespace CustomerManagement.DAL.UnitOfWork.Repository
             if(entity == null)
                 return;
 
-            if (!IsEntitySaved(entity))
+            if (!entitySavedValidator.IsEntitySaved(entity))
             {
                 var entry = context.Entry(entity);
                 if (entry != null)

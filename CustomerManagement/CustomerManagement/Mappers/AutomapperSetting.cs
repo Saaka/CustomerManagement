@@ -15,6 +15,7 @@ namespace CustomerManagement.Mappers
             MapperConfiguration config = new MapperConfiguration((c) =>
             {
                 c.CreateMap<Customer, CustomerModel>();
+                c.CreateMap<CustomerModel, Customer>();
             });
 
             return config.CreateMapper();
