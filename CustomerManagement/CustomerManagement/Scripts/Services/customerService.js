@@ -1,6 +1,6 @@
 ﻿angular.module('customerManager')
     .service('customerService', ['$http', '$q', function ($http, $q) {
-        var address = '/api/customers'
+        var address = '/api/customers/'
 
         this.loadCustomers = function () {
             var defer = $q.defer();
@@ -24,5 +24,17 @@
                     defer.reject(err);
                 });
             return defer.promise;
-        }
+        };
+
+        this.deleteCustomer = function (id) {
+            var defer = $q.defer();
+            $http.delete(address + id)
+                .success(function (res) {
+                    defer.resolve(res);
+                })
+                .error(function (err) {
+                    defer.reject(err);
+                });
+            return defer.promise;
+        };
     }]);

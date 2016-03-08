@@ -1,5 +1,6 @@
 ﻿using CustomerManagement.Business.Customer;
 using CustomerManagement.Models;
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -27,6 +28,15 @@ namespace CustomerManagement.Controllers
             var customerModel = await customerManager.SaveCustomerAsync(customer);
 
             return Ok(customerModel);
+        }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public async Task<IHttpActionResult> DeleteCustomer(Guid id)
+        {
+            await customerManager.DeleteCustomerAsync(id);
+
+            return Ok();
         }
     }
 }

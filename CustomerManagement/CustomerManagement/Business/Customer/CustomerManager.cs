@@ -34,5 +34,13 @@ namespace CustomerManagement.Business.Customer
             await unitOfWork.CommitAsync();
             return mapper.Map<CustomerModel>(customer);
         }
+
+        public async Task DeleteCustomerAsync(Guid id)
+        {
+            DAL.Models.Customer customer = await unitOfWork.CustomerRepository.GetByIdAsync(id);
+            unitOfWork.CustomerRepository.Delete(customer);
+            await unitOfWork.CommitAsync();
+            return;
+        }
     }
 }
