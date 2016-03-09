@@ -1,17 +1,19 @@
 ﻿angular.module('customerManager')
     .controller('CustomerListCtrl', ['$scope', 'customerService', 'alertService', function ($scope, customerService, alertService) {
         $scope.customers = [];
+        $scope.showLoader = false;
 
         var init = function () {
-            alertService.loader();
-            customerService.loadCustomers()
+            $scope.showLoader = true;
+            customerService
+                .loadCustomers()
                 .then(function (res) {
                     $scope.customers = res;
-                    alertService.close();
+                    $scope.showLoader = false;
                 })
                 .catch(function (err) {
-                    alertService.close();
-                    alertService.error("Can't load customers", err);
+                    alertService.error("Can't load customers", err.message);
+                    $scope.showLoader = false;
                 });
         };
 
@@ -27,9 +29,10 @@
                                 if (!$scope.$$phase) {
                                     $scope.$apply();
                                 }
+                                alertService.success('Success', 'Customer deleted');
                             })
                             .catch(function (err) {
-                                alertService.error("Can't delete customer", err);
+                                alertService.error("Can't delete customer", err.message);
                             });
                     }
                 }

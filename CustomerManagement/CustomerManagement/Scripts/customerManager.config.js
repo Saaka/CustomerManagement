@@ -14,4 +14,7 @@
             params: { cust: {}}
         });
 
+      swal.setDefaults({
+          allowEscapeKey: false
+      });
   }]);

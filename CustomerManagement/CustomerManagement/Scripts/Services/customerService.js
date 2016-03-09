@@ -9,7 +9,7 @@
                     defer.resolve(res);
                 })
                 .error(function (err) {
-                    derer.reject(err);
+                    defer.reject(err);
                 });
             return defer.promise;
         };

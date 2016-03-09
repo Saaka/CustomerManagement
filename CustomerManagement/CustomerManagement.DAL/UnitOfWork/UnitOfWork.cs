@@ -57,10 +57,14 @@ namespace CustomerManagement.DAL.UnitOfWork
 
         public void Attach(object entity)
         {
+            var entry = context.Entry(entity);
+            if (entry == null)
+                throw new ArgumentException("Invalid entity object");
+
             if (entitySavedValidator.IsEntitySaved(entity))
-                context.Entry(entity).State = EntityState.Modified;
+                entry.State = EntityState.Modified;
             else
-                context.Entry(entity).State = EntityState.Added;
+                entry.State = EntityState.Added;
         }
 
         private void Dispose(bool disposing)

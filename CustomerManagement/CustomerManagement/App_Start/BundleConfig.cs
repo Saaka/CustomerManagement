@@ -27,6 +27,9 @@ namespace CustomerManagement
                             .Include("~/lib/bootstrap/css/bootstrap.css", new CssRewriteUrlTransform())
                             .Include("~/lib/fontawesome/css/font-awesome.min.css", new CssRewriteUrlTransform()));
 
+            bundles.Add(new StyleBundle("~/bundles/customer-manager-css")
+                            .Include("~/Styles/customer-manager.css"));
+
             bundles.Add(new ScriptBundle("~/bundles/customer-manager-js")
                             .Include("~/Scripts/customerManager.js",
                                         "~/Scripts/customerManager.config.js",

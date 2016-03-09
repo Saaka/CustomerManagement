@@ -20,14 +20,16 @@
         };
 
         $scope.saveCustomer = function () {
+            alertService.loader('Saving customer');
             customerService.saveCustomer($scope.customer)
                 .then(function (res) {
-                    alertService.success('Success', 'Customer saved!', function () {
+                    alertService.success('Success', 'Customer saved!');
+                    alertService.close();
                         $state.go('list');
-                    });
                 })
                 .catch(function (err) {
-                    alertService.error('Error', err);
+                    alertService.error('Error', err.message);
+                    alertService.close();
                 });
         };
 

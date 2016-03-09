@@ -2,7 +2,12 @@
     <div class="page-header">
         <h1>Customer list</h1>
     </div>
-    <div ng-show="customers.length > 0">
+    <div ng-show="showLoader">
+        <p class="loader">
+            <i class="fa fa-spinner fa-spin fa-3x"></i>
+        </p>
+    </div>
+    <div ng-show="customers.length > 0 && !showLoader">
         <table class="table table-striped">
             <tr>
                 <th>No.</th>

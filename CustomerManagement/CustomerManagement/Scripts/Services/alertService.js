@@ -1,5 +1,5 @@
 ﻿angular.module('customerManager')
-    .service('alertService', function () {
+    .service('alertService', ['toaster', function (toaster) {
 
         this.confirm = function (title, message, onClose) {
             swal({
@@ -13,38 +13,36 @@
             onClose);
         };
 
-        this.success = function (title, message, onClose) {
-            swal({ 
-                title: title, 
-                text: message 
-            }, function () {
-                if (onClose) {
-                    onClose();
-                }
+        this.success = function (title, message) {
+            toaster.pop({
+                type: 'success',
+                title: title,
+                body: message,
+                timeout: 3000
             });
         };
 
-        this.error = function (title, message, onClose) {
-            swal({title: title,
-                text: message,
-                type: 'error'
-            }, function() {
-                if(onClose) {
-                    onClose();
-                }
+        this.error = function (title, message) {
+            toaster.pop({
+                type: 'error',
+                title: title,
+                body: message,
+                timeout: 3000
             });
         };
 
-        this.loader = function () {
+        this.loader = function (message) {
             swal({
-                title: "<span><i class='fa fa-refresh fa-spin'></i></span>",
-                text: "Loading data",
+                title: "<span><i class='fa fa-refresh fa-spin fa-2x'></i></span>",
+                text: "<h2>" + message + "</h2>",
                 html: true,
-                showConfirmButton: false
+                showConfirmButton: false,
+                closeOnCancel: false,
+                closeOnConfirm: false
             });
         };
 
         this.close = function () {
             swal.close();
         }
-    });
+    }]);

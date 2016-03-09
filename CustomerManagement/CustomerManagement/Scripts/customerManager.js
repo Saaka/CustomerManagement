@@ -1,1 +1,1 @@
-﻿angular.module('customerManager', ['ui.router', 'toaster']);
+﻿angular.module('customerManager', ['ui.router', 'toaster', 'ngAnimate']);
